@@ -10,16 +10,16 @@ status = {
 
 # Dictionary for cow's toys
 toy_dictionary = {
-    "highland cow": ["bagpipes", "Loch Ness monster", "rugby ball"], 
-    "texas longhorn cow": ["guitar", "Trump", "tumbleweed"], 
-    "limousin cow": ["bike", "skiis", "Effiel Tower"], 
+    "Highland": ["bagpipes", "Loch Ness monster", "rugby ball"], 
+    "Texas Longhorn": ["guitar", "Trump", "tumbleweed"], 
+    "Limousin": ["bike", "skiis", "Effiel Tower"], 
 }
 
 # Dictionary for cow's food
 food_dictionary = {
-    "highland cow": ["haggis", "shortbread", "bacon butty"], 
-    "texas longhorn cow": ["barbeque", "chilli", "anything fried"], 
-    "limousin cow": ["baguette", "cigarette", "croissant"], 
+    "Highland": ["haggis", "shortbread", "bacon butty"], 
+    "Texas lLnghorn": ["barbeque", "chilli", "anything fried"], 
+    "Limousin": ["baguette", "cigarette", "croissant"], 
 }
 
 # Function for user to select breed of cow they want
@@ -30,9 +30,13 @@ def starting_choices():
 
     #validate user input
     while cow_choice not in breed_list:
-        print("Pick something from the list!")
+        print("Here are the breeds availabe for adoption. Make sure you pick something from the list!")
         for option in breed_list:
             print(option)
-        cow_choice = input("Which breed of cow would you like to adopt? ")
+        cow_choice = input("Which type of cow would you like to adopt? ")
+
+    # User input to name pet
+    name = input(f"Woohoo! You've adopt a {cow_choice} cow as your pet. What will you name them? ")
+    print(f"{name} is a great name for such a cool {cow_choice} cow!")
 
 starting_choices()
