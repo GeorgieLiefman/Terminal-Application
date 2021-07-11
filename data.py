@@ -18,6 +18,14 @@ toy_dictionary = {
 # Dictionary for cow's food
 food_dictionary = {
     "Highland": ["haggis", "shortbread", "bacon butty"], 
-    "Texas lLnghorn": ["barbeque", "chilli", "anything fried"], 
+    "Texas Longhorn": ["barbeque", "chilli", "anything fried"], 
     "Limousin": ["baguette", "cigarette", "croissant"], 
+}
+
+# Dictionary for menu options
+menu_options = {
+    "Q": {"function": quit_app, "text": "Quit the application"},
+    "F": {"function": feed_cow, "text": f"Feed {name}"},
+    "G": {"function": game, "text": f"Play rock, paper, scissors against {name}"},
+    "T": {"function": toy, "text": f"Give {name} a new toy"}
 }

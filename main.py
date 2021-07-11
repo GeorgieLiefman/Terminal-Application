@@ -1,11 +1,10 @@
 from data import status, toy_dictionary, food_dictionary
 
-# Function for user to select breed of cow they want
+# Function for user to select breed of cow they want and name said cow
 def starting_choices():
     cow_choice = ""
 
     breed_list = list(food_dictionary.keys())
-
     #validate user input
     while cow_choice not in breed_list:
         print("Here are the breeds availabe for adoption. Make sure you pick something from the list!")
