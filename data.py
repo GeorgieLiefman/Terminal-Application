@@ -23,9 +23,9 @@ food_dictionary = {
 }
 
 # Dictionary for menu options
-menu_options = {
+menuOptions = {
     "Q": {"function": quit_app, "text": "Quit the application"},
-    "F": {"function": feed_cow, "text": f"Feed {name}"},
-    "G": {"function": game, "text": f"Play rock, paper, scissors against {name}"},
-    "T": {"function": toy, "text": f"Give {name} a new toy"}
+    "F": {"function": feed_cow, "text": f"Feed your cow"},
+    "G": {"function": game, "text": f"Play rock, paper, scissors against your cow"},
+    "T": {"function": toy, "text": f"Give your cow a new toy"}
 }
