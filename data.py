@@ -8,6 +8,13 @@ status = {
     "Owned Toys": []
 }
 
+# Dictionary for cow breeds for user to select from
+breed_dictionary = {
+    "H": {"text": "Highland"}, 
+    "T": {"text": "Texas Longhorn"}, 
+    "L": {"text": "Limousin"}
+}
+
 # Dictionary for cow's toys
 toy_dictionary = {
     "Highland": ["bagpipes", "Loch Ness monster", "rugby ball"], 
@@ -23,9 +30,10 @@ food_dictionary = {
 }
 
 # Dictionary for menu options
-menuOptions = {
-    "Q": {"function": quit_app, "text": "Quit the application"},
-    "F": {"function": feed_cow, "text": f"Feed your cow"},
-    "G": {"function": game, "text": f"Play rock, paper, scissors against your cow"},
-    "T": {"function": toy, "text": f"Give your cow a new toy"}
+menu_dictionary = {
+        "F": {"function": feed_cow, "text": "Feed " + cow["name"] + "."},
+        "T": {"function": new_toys, "text": "Get a new toy for " + cow["name"] + "."},
+        "P": {"function": play_toys, "text": "Have " + cow["name"] + " play with their toys."},
+        "R": {"function": rps_game, "text": "Play Rock, Paper, Scissors against " + cow["name"] + "!"},
+        "Q": {"function": quit_app, "text": "Stop playing with " + cow["name"] + " and quit the application."}
 }
