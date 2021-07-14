@@ -19,6 +19,43 @@ Make sure you type the letter which corresponds with the breed you want!""")
     print(cow["name"] + " is a great name for such a cool cow!")
     print(" ")
 
-starting_choices()
-
+# output the starting user's cow status
 print(cow)
+
+# print menu
+def menu_display(menu_dictionary):
+    optionKeys = list(menu_dictionary.keys())
+
+    print("Here are your options:")
+    print("---------")
+    for key in optionKeys:
+        print(key + ":\t" + menu_dictionary[key]["text"])
+
+# Function to play with cow's toys
+
+# Function to get new toys for user's cow
+
+# Function to quit simulator 
+
+# Function to f(eed user's cow
+def feed_cow():
+    print("You fed your cow!")
+
+# Function to play rock, paper, scissors 
+ 
+# Function to print out the updated status of the user's cow each "day"
+
+
+# Function for the main menu game loop
+def primary_loop():
+    #intialise out pet
+    starting_choices()
+
+    #menu options for printing and access
+    menu_dictionary = {
+        "F": {"function": feed_cow, "text": "Feed " + cow["name"] + "."},
+    }   
+
+    menu_display(menu_dictionary)
+
+primary_loop()
