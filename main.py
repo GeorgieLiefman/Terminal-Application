@@ -32,16 +32,24 @@ def menu_display(menu_dictionary):
         print(key + ":\t" + menu_dictionary[key]["text"])
 
 # Function to play with cow's toys
+def play_toys():
+    print("You played with your toys")
 
 # Function to get new toys for user's cow
+def new_toys():
+    print("You got some new toys!")
 
 # Function to quit simulator 
+def quit_app():
+    print("You quit the app!")
 
-# Function to f(eed user's cow
+# Function to feed user's cow
 def feed_cow():
     print("You fed your cow!")
 
 # Function to play rock, paper, scissors 
+def rps_game():
+    print("You played RPS!")
  
 # Function to print out the updated status of the user's cow each "day"
 
@@ -54,6 +62,10 @@ def primary_loop():
     #menu options for printing and access
     menu_dictionary = {
         "F": {"function": feed_cow, "text": "Feed " + cow["name"] + "."},
+        "T": {"function": new_toys, "text": "Get a new toy for " + cow["name"] + "."},
+        "P": {"function": play_toys, "text": "Have " + cow["name"] + " play with their toys."},
+        "R": {"function": rps_game, "text": "Play Rock, Paper, Scissors against " + cow["name"] + "!"},
+        "Q": {"function": quit_app, "text": "Stop playing with " + cow["name"] + " and quit the application."}
     }   
 
     menu_display(menu_dictionary)
