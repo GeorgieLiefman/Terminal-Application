@@ -5,7 +5,7 @@ def starting_choices():
     cow["breed"] = ""
 
     breed_list = list(breed_dictionary.keys())
-    #validate user input
+    # verify user input
     while cow["breed"] not in breed_list:
         print("""Here are the breeds availabe for adoption. 
 Make sure you type the letter which corresponds with the breed you want!""")
@@ -69,19 +69,23 @@ def primary_loop():
         "Q": {"function": quit_app, "text": "Stop playing with " + cow["name"] + " and quit the application."}
     }   
 
-    keepPlaying = True
-    while keepPlaying:
-        # print the menu
+    continue_game = True
+    while continue_game:
+        # display game menu
         feature_choice = ""
 
-        #validate the input
+        # verify user input
         while feature_choice not in menu_dictionary.keys():
             menu_display(menu_dictionary)
             print(" ")
             feature_choice = input("Which of these activities would you like to do with " + cow["name"] + "? ").upper()
 
-        #quit the game if the user put in Q
+        # quit the application if the user picks option from menu
         if feature_choice == "Q":
-            keepPlaying = False
+            continue_game = False
+
+        # add functionality to main game menu
+        menu_dictionary[feature_choice]["function"]()
+
 
 primary_loop()
