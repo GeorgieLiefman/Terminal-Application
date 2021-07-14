@@ -26,7 +26,8 @@ print(cow)
 def menu_display(menu_dictionary):
     optionKeys = list(menu_dictionary.keys())
 
-    print("Here are your options:")
+    print("""Make sure you type the letter which corresponds with the feature you want to use!
+These are the activities that are currently on offer to do:""")
     print("---------")
     for key in optionKeys:
         print(key + ":\t" + menu_dictionary[key]["text"])
@@ -68,6 +69,19 @@ def primary_loop():
         "Q": {"function": quit_app, "text": "Stop playing with " + cow["name"] + " and quit the application."}
     }   
 
-    menu_display(menu_dictionary)
+    keepPlaying = True
+    while keepPlaying:
+        # print the menu
+        feature_choice = ""
+
+        #validate the input
+        while feature_choice not in menu_dictionary.keys():
+            menu_display(menu_dictionary)
+            print(" ")
+            feature_choice = input("Which of these activities would you like to do with " + cow["name"] + "? ").upper()
+
+        #quit the game if the user put in Q
+        if feature_choice == "Q":
+            keepPlaying = False
 
 primary_loop()
