@@ -1,4 +1,5 @@
 from data import cow, toy_dictionary, food_dictionary, breed_dictionary
+import random
 
 # Function for user to select breed of cow they want and name said cow
 def starting_choices():
@@ -69,16 +70,19 @@ def rps_game():
  
 # Function to print out the updated status of the user's cow each "day"
 def updated_status():
+    print()
     print("Here is an update of how " + cow["name"] + " is progressing!")
-    print("Your pet currently has: " + str(len(cow["toys"])) + " toys. These toys are: ")
+    print("--------")
+    print("At the moment, your cow owns: " + str(len(cow["toys"])) + " toys. These toys are: ")
     for toy in cow["toys"]:
         print(toy)
-    print("Your pet is currently at hunger of " + str(cow["hunger"]) + " of a max 100.")
-    print("Your pet is " + str(cow["age"]) + " " + "days old.")
+    print(cow["name"] + "'s hunger level is presently " + str(cow["hunger"]) + " out of a maximum 100 and a minimum of 0.")
+    print(cow["name"] + "'s happiness level is presently " + str(cow["happiness"]) + " out of a maximum 100 and a minimum of 0.")
+    print("Currently, your cow is " + str(cow["age"]) + " " + "days old.")
 
 # Function for the main menu game loop
 def primary_loop():
-    #intialise out pet
+    # print starting choices 
     starting_choices()
 
     #menu options for printing and access
@@ -104,13 +108,16 @@ def primary_loop():
         # quit the application if the user picks option from menu
         if feature_choice == "Q":
             continue_game = False
+    
 
         # add functionality to main game menu
         menu_dictionary[feature_choice]["function"]()
 
-        # increase pet's hunger and age
-        cow["hunger"] += 10
+        # increase/decrease cow's hunger, happiness and age
+        cow["hunger"] += random.randint(5, 20)
+        cow["happiness"] -= random.randint(4, 15)
         cow["age"] += 1
+
 
         updated_status()
         #print an extra line between options
