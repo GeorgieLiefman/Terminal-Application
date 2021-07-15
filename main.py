@@ -12,12 +12,12 @@ Make sure you type the letter which corresponds with the breed you want!""")
         for key in breed_list:
             print(key + ":\t" + breed_dictionary[key]["text"])
         cow["breed"] = input("Which type of cow would you like to adopt? ").upper()
-        print(" ")
+        print()
 
     # User input to name pet
     cow["name"] = input("Woohoo! You've adopt a cow as your pet. What will you name them? ")
     print(cow["name"] + " is a great name for such a cool cow!")
-    print(" ")
+    print()
 
 # output the starting user's cow status
 print(cow)
@@ -26,9 +26,9 @@ print(cow)
 def menu_display(menu_dictionary):
     optionKeys = list(menu_dictionary.keys())
 
+    print()
     print("""Make sure you type the letter which corresponds with the feature you want to use!
 These are the activities that are currently on offer to do:""")
-    print("---------")
     for key in optionKeys:
         print(key + ":\t" + menu_dictionary[key]["text"])
 
@@ -38,7 +38,22 @@ def play_toys():
 
 # Function to get new toys for user's cow
 def new_toys():
-    print("You got some new toys!")
+    print("Hooray! " + cow["name"] + " is going to have some new toys to play with!")
+    selectable_toys = ["pile of mulch", "obstacle course", "cow plushie"]
+    print(selectable_toys)
+    #specific toy number to select from the list
+    number_toy = -1
+
+    #get a valid toy to input
+    while number_toy < 0 or number_toy > len(selectable_toys) -1:
+        for x in range(len(selectable_toys)):
+            print(str(x) + ": " + selectable_toys[x])
+        number_toy = int(input("Input the number of the toy you would like: "))
+
+        #get the selected toy option from our list
+        picked_toy = selectable_toys[number_toy]
+        cow["toys"].append(picked_toy)
+        print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
 
 # Function to quit simulator 
 def quit_app():
@@ -77,7 +92,7 @@ def primary_loop():
         # verify user input
         while feature_choice not in menu_dictionary.keys():
             menu_display(menu_dictionary)
-            print(" ")
+            print()
             feature_choice = input("Which of these activities would you like to do with " + cow["name"] + "? ").upper()
 
         # quit the application if the user picks option from menu
