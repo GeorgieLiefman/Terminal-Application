@@ -26,8 +26,7 @@ print(cow)
 # print menu
 def menu_display(menu_dictionary):
     optionKeys = list(menu_dictionary.keys())
-
-    print()
+    print("___________________________________________________________________________________")
     print("""Make sure you type the letter which corresponds with the feature you want to use!
 These are the activities that are currently on offer to do:""")
     for key in optionKeys:
@@ -62,7 +61,15 @@ def quit_app():
 
 # Function to feed user's cow
 def feed_cow():
-    print("You fed your cow!")
+    # handle negative edge cases
+    negative_hunger = random.randint(16, 32)
+    update_hunger = cow["hunger"] - negative_hunger
+    if update_hunger < 0:
+        update_hunger = 0
+    # decrease cow's hunger level by feeding it
+    cow["hunger"] = update_hunger
+    print("Fed your cow! Hunger decreased by " + str(negative_hunger)) 
+
 
 # Function to play rock, paper, scissors 
 def rps_game():
@@ -71,11 +78,11 @@ def rps_game():
 # Function to print out the updated status of the user's cow each "day"
 def updated_status():
     print()
+    print("______________________________________")
     print("Here is an update of how " + cow["name"] + " is progressing!")
-    print("--------")
     print("At the moment, your cow owns: " + str(len(cow["toys"])) + " toys. These toys are: ")
-    for toy in cow["toys"]:
-        print(toy)
+    for owned_toy in cow["toys"]:
+        print(owned_toy)
     print(cow["name"] + "'s hunger level is presently " + str(cow["hunger"]) + " out of a maximum 100 and a minimum of 0.")
     print(cow["name"] + "'s happiness level is presently " + str(cow["happiness"]) + " out of a maximum 100 and a minimum of 0.")
     print("Currently, your cow is " + str(cow["age"]) + " " + "days old.")
@@ -84,7 +91,6 @@ def updated_status():
 def primary_loop():
     # print starting choices 
     starting_choices()
-
     #menu options for printing and access
     menu_dictionary = {
         "F": {"function": feed_cow, "text": "Feed " + cow["name"] + "."},
@@ -102,8 +108,8 @@ def primary_loop():
         # verify user input
         while feature_choice not in menu_dictionary.keys():
             menu_display(menu_dictionary)
-            print()
             feature_choice = input("Which of these activities would you like to do with " + cow["name"] + "? ").upper()
+            print()
 
         # quit the application if the user picks option from menu
         if feature_choice == "Q":
@@ -114,7 +120,7 @@ def primary_loop():
         menu_dictionary[feature_choice]["function"]()
 
         # increase/decrease cow's hunger, happiness and age
-        cow["hunger"] += random.randint(5, 20)
+        cow["hunger"] += random.randint(3, 15)
         cow["happiness"] -= random.randint(4, 15)
         cow["age"] += 1
 
