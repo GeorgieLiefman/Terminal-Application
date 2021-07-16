@@ -34,7 +34,31 @@ These are the activities that are currently on offer to do:""")
 
 # Function to play with cow's toys
 def play_toys():
-   
+    # handle happiness levels if they dip into the negative or exceed 100
+    postive_happiness = random.randint(16, 32)
+    updated_happiness = cow["happiness"] + postive_happiness
+    if updated_happiness <= 0:
+        updated_happiness = 0
+    if updated_happiness >= 100:
+        updated_happiness = 100
+    # increase cow's happiness level by having it play with toys 
+    cow["happiness"] = updated_happiness
+    # print out options of toys to for user's cow to play with
+    print("_________________________________________________________________________________")
+    print("Here are the options of foods you can feed your cow: ")
+    toy_choices = ["big red ball", "cow figurine", "chicken", "bagpipes", "country guitar", "bicycle"]
+    print(toy_choices)
+    #specific location number to select from the list
+    toy_number = -1
+    #get a valid location to input
+    while toy_number < 0 or toy_number > len(toy_choices) -1:
+        for x in range(len(toy_choices)):
+            print(str(x) + ": " + toy_choices[x])
+        toy_number = int(input("Enter the number which corresponds with the food you'd like to feed your cow: "))
+        selected_toy = toy_choices[toy_number]
+        # output happiness levels and user's input
+        print("Yipee! " + cow["name"] + " had a lot of fun playing with the " + selected_toy + " you picked for them.")
+        print("Their happiness increased by " + str(postive_happiness) + ".") 
 
 # Function to get new toys for user's cow
 def new_toys():
@@ -64,10 +88,10 @@ def feed_cow():
     # handle hunger levels if they dip into the negative or exceed 100
     negative_hunger = random.randint(16, 32)
     updated_hunger = cow["hunger"] - negative_hunger
-    if updated_hunger < 0:
+    if updated_hunger <= 0:
         updated_hunger = 0
-    if updated_hunger > 100:
-        updated_hunger = 0
+    if updated_hunger >= 100:
+        updated_hunger = 100
     # decrease cow's hunger level by feeding it
     cow["hunger"] = updated_hunger
     # print out options of food to feed user's cow
