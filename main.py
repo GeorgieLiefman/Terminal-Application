@@ -4,7 +4,6 @@ import random
 # Function for user to select breed of cow they want and name said cow
 def starting_choices():
     cow["breed"] = ""
-
     breed_list = list(breed_dictionary.keys())
     # verify user input
     while cow["breed"] not in breed_list:
@@ -19,9 +18,6 @@ Make sure you type the letter which corresponds with the breed you want!""")
     cow["name"] = input("Woohoo! You've adopt a cow as your pet. What will you name them? ")
     print(cow["name"] + " is a great name for such a cool cow!")
     print()
-
-# output the starting user's cow status
-print(cow)
 
 # print menu
 def menu_display(menu_dictionary):
@@ -44,38 +40,55 @@ def play_toys():
     # increase cow's happiness level by having it play with toys 
     cow["happiness"] = updated_happiness
     # print out options of toys to for user's cow to play with
-    print("_________________________________________________________________________________")
-    print("Here are the options of foods you can feed your cow: ")
-    toy_choices = ["big red ball", "cow figurine", "chicken", "bagpipes", "country guitar", "bicycle"]
-    print(toy_choices)
-    #specific location number to select from the list
-    toy_number = -1
-    #get a valid location to input
-    while toy_number < 0 or toy_number > len(toy_choices) -1:
-        for x in range(len(toy_choices)):
-            print(str(x) + ": " + toy_choices[x])
-        toy_number = int(input("Enter the number which corresponds with the food you'd like to feed your cow: "))
-        selected_toy = toy_choices[toy_number]
-        # output happiness levels and user's input
+    try:
+        print("_________________________________________________________________________________")
+        print("Here are the options of foods you can feed your cow: ")
+        toy_choices = ["big red ball", "cow figurine", "chicken", "bagpipes", "country guitar", "bicycle"]
+        print(toy_choices)
+        #specific location number to select from the list
+        toy_number = -1
+        #get a valid location to input
+        while toy_number < 0 or toy_number > len(toy_choices) -1:
+            for x in range(len(toy_choices)):
+                print(str(x) + ": " + toy_choices[x])
+            toy_number = int(input("Enter the number which corresponds with the toy you'd your cow to play with: "))
+            selected_toy = toy_choices[toy_number]
+            # output happiness levels and user's input
+
+    except (IndexError, ValueError):
+        print()
+        print("""Sorry that was not a valid answer.
+If you want """ + cow["name"] + " to play with their toys you have to make sure you input the number that corresponds with the toy you want them to play with next time.")
+
+    else:
+        print()
         print("Yipee! " + cow["name"] + " had a lot of fun playing with the " + selected_toy + " you picked for them.")
         print("Their happiness increased by " + str(postive_happiness) + ".") 
 
 # Function to get new toys for user's cow
 def new_toys():
-    print("_________________________________________________________________________________")
-    print("Hooray! " + cow["name"] + " is going to have some new toys to play with!")
-    selectable_toys = ["pile of mulch", "obstacle course", "cow plushie"]
-    print(selectable_toys)
-    #specific toy number to select from the list
-    number_toy = -1
-    #get a valid toy to input
-    while number_toy < 0 or number_toy > len(selectable_toys) -1:
-        for x in range(len(selectable_toys)):
-            print(str(x) + ": " + selectable_toys[x])
-        number_toy = int(input("Enter the number which corresponds with the toy you'd like for your cow: "))
-        #get the selected toy option from our list
-        picked_toy = selectable_toys[number_toy]
-        cow["toys"].append(picked_toy)
+    try:
+        print("_________________________________________________________________________________")
+        print("Hooray! " + cow["name"] + " is going to have some new toys to play with!")
+        selectable_toys = ["pile of mulch", "obstacle course", "cow plushie"]
+        print(selectable_toys)
+        #specific toy number to select from the list
+        number_toy = -1
+        #get a valid toy to input
+        while number_toy < 0 or number_toy > len(selectable_toys) -1:
+            for x in range(len(selectable_toys)):
+                print(str(x) + ": " + selectable_toys[x])
+            number_toy = int(input("Enter the number which corresponds with the toy you'd like for your cow: "))
+            #get the selected toy option from our list
+            picked_toy = selectable_toys[number_toy]
+            cow["toys"].append(picked_toy)
+
+    except (IndexError, ValueError):
+        print()
+        print("""Sorry that was not a valid answer.
+If you want to give """ + cow["name"] + " a new toy you have to make sure you input the number that corresponds with the toy you want to gift them next time.")
+        
+    else:    
         print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
 
 # Function to quit simulator 
@@ -95,39 +108,54 @@ def feed_cow():
     # decrease cow's hunger level by feeding it
     cow["hunger"] = updated_hunger
     # print out options of food to feed user's cow
-    print("_________________________________________________________________________________")
-    print("Here are the options of foods you can feed your cow: ")
-    food_choices = ["grass", "hay", "salt lick", "haggis", "anything fried", "baguette"]
-    print(food_choices)
-    #specific location number to select from the list
-    number_food = -1
-    #get a valid location to input
-    while number_food < 0 or number_food > len(food_choices) -1:
-        for x in range(len(food_choices)):
-            print(str(x) + ": " + food_choices[x])
-        number_food = int(input("Enter the number which corresponds with the food you'd like to feed your cow: "))
-        picked_food = food_choices[number_food]
+    try:
+        print("_________________________________________________________________________________")
+        print("Here are the options of foods you can feed your cow: ")
+        food_choices = ["grass", "hay", "salt lick", "haggis", "anything fried", "baguette"]
+        print(food_choices)
+        #specific location number to select from the list
+        number_food = -1
+        #get a valid location to input
+        while number_food < 0 or number_food > len(food_choices) -1:
+            for x in range(len(food_choices)):
+                print(str(x) + ": " + food_choices[x])
+            number_food = int(input("Enter the number which corresponds with the food you'd like to feed your cow: "))
+            picked_food = food_choices[number_food]
+    
+    except (ValueError, IndexError):
+        print()
+        print("""Sorry that was not a valid answer.
+If you want to fed """ + cow["name"] + " you have to make sure you input the number that corresponds with the food you want to feed them next time.")
+
+    else:
         # output hunger levels and user's input
         print("Yummy! " + cow["name"] + " enjoyed the " + picked_food + " you fed them.")
         print("Their hunger decreased by " + str(negative_hunger) + ".") 
 
 # Function to walk cow 
 def walk():
-    print("_________________________________________________________________________________")
-    print("Good choice! " + cow["name"] + " is really excited to go on a walk with you!")
-    location = ["far left paddock", "down to the pond", "mountain"]
-    print(location)
-    #specific location number to select from the list
-    number_location = -1
-    #get a valid location to input
-    while number_location < 0 or number_location > len(location) -1:
-        for x in range(len(location)):
-            print(str(x) + ": " + location[x])
-        number_location = int(input("Enter the number which corresponds with where you'd like to walk your cow: "))
-        #get the selected location option from the list
-        picked_location = location[number_location]
-        # random event which will occur while your cow is on its walk
-        random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and I now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
+    try:
+        print("_________________________________________________________________________________")
+        print("Good choice! " + cow["name"] + " is really excited to go on a walk with you!")
+        location = ["far left paddock", "down to the pond", "mountain"]
+        print(location)
+        #specific location number to select from the list
+        number_location = -1
+        #get a valid location to input
+        while number_location < 0 or number_location > len(location) -1:
+            for x in range(len(location)):
+                print(str(x) + ": " + location[x])
+            number_location = int(input("Enter the number which corresponds with where you'd like to walk your cow: "))
+            #get the selected location option from the list
+            picked_location = location[number_location]
+            # random event which will occur while your cow is on its walk
+            random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and I now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
+        
+    except (ValueError, IndexError):
+        print("""Sorry that was not a valid answer.
+If you want to walk """ + cow["name"] + " you have to make sure you input the number that corresponds with the location you want to walk them next time.")
+
+    else:   
         # output statements for walk
         print()
         print(cow["name"] + " had a great time walking to the " + picked_location + "!")
@@ -180,6 +208,4 @@ def primary_loop():
         updated_status()
         print()
  
-
-
 primary_loop()
