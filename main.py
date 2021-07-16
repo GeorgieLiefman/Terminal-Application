@@ -1,6 +1,20 @@
 from data import cow, breed_dictionary
 import random
 
+print("------------------------------")
+print("UDDERLY AMOOSING COW SIMULATOR")
+print("------------------------------")
+# overview and instructions for game
+print("This application is designed to be a virtual cow pet simulator, similar to Tamagotchis or Neopets. You will adopt and name a cow of your choosing that you can care for and play with. There are a number of features you can use to interact with your cow including: feeding them, walking them, giving them new toys, having them play with their toys and lastly observing their progress through daily status updates.")
+print()
+print("Each day your cow’s hunger levels will increase at a random amount unless they are fed. Similarly, their happiness levels will  decrease daily at a random amount unless they play with their toys. A single day passes when one activity is completed.")
+print()
+print("The game will prompt you with choices to make for you cow for each activity/feature. Please make sure you enter the number/letter which corresponds with the choice you want to make. If you are confused, use the text on the screen as a guide for what to do next. ")
+print()
+print("Thank you for playing my application and have fun playing with your new cow best friend!")
+print()
+print("_________________________________________________________________________________")
+
 # Function for user to select breed of cow they want and name said cow
 def starting_choices():
     cow["breed"] = ""
@@ -84,7 +98,7 @@ def new_toys():
             #get the selected toy option from our list
             picked_toy = selectable_toys[number_toy]
             cow["toys"].append(picked_toy)
-
+    
     except (IndexError, ValueError):
         print()
         print("_________________________________________________________________________________")
@@ -159,7 +173,7 @@ def walk():
             picked_location = location[number_location]
             # random event which will occur while your cow is on its walk
             random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and I now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
-        
+
     except (ValueError, IndexError):
         print()
         print("_________________________________________________________________________________")
