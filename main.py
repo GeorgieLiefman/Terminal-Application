@@ -49,7 +49,21 @@ def play_toys():
 
 # Function to get new toys for user's cow
 def new_toys():
-   
+    print("_________________________________________________________________________________")
+    print("Hooray! " + cow["name"] + " is going to have some new toys to play with!")
+    selectable_toys = ["pile of mulch", "obstacle course", "cow plushie"]
+    print(selectable_toys)
+    #specific toy number to select from the list
+    number_toy = -1
+    #get a valid toy to input
+    while number_toy < 0 or number_toy > len(selectable_toys) -1:
+        for x in range(len(selectable_toys)):
+            print(str(x) + ": " + selectable_toys[x])
+        number_toy = int(input("Enter the number which corresponds with the toy you'd like for your cow: "))
+        #get the selected toy option from our list
+        picked_toy = selectable_toys[number_toy]
+        cow["toys"].append(picked_toy)
+        print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
 
 # Function to quit simulator 
 def quit_app():
