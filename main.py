@@ -34,26 +34,22 @@ These are the activities that are currently on offer to do:""")
 
 # Function to play with cow's toys
 def play_toys():
+    # handle happiness levels if they dip into the negative or exceed 100
+    postive_happiness = random.randint(16, 32)
+    updated_happiness = cow["happiness"] + postive_happiness
+    if updated_happiness < 0:
+        updated_happiness = 0
+    if updated_happiness > 100:
+        updated_happiness = 0
+    # increase cow's happiness level by having it play with toys 
+    cow["happiness"] = updated_happiness
     print("_________________________________________________________________________________")
-    print("You played with your toys")
+    print("Yummy! " + cow["name"] + " enjoyed the food you fed them.")
+    print("Their happiness increased by " + str(postive_happiness)) 
 
 # Function to get new toys for user's cow
 def new_toys():
-    print("_________________________________________________________________________________")
-    print("Hooray! " + cow["name"] + " is going to have some new toys to play with!")
-    selectable_toys = ["pile of mulch", "obstacle course", "cow plushie"]
-    print(selectable_toys)
-    #specific toy number to select from the list
-    number_toy = -1
-    #get a valid toy to input
-    while number_toy < 0 or number_toy > len(selectable_toys) -1:
-        for x in range(len(selectable_toys)):
-            print(str(x) + ": " + selectable_toys[x])
-        number_toy = int(input("Enter the number which corresponds with the toy you'd like for your cow: "))
-        #get the selected toy option from our list
-        picked_toy = selectable_toys[number_toy]
-        cow["toys"].append(picked_toy)
-        print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
+   
 
 # Function to quit simulator 
 def quit_app():
@@ -62,17 +58,31 @@ def quit_app():
 
 # Function to feed user's cow
 def feed_cow():
-    # handle hunger levels if they dip into the negative
+    # handle hunger levels if they dip into the negative or exceed 100
     negative_hunger = random.randint(16, 32)
-    update_hunger = cow["hunger"] - negative_hunger
-    if update_hunger < 0:
-        update_hunger = 0
+    updated_hunger = cow["hunger"] - negative_hunger
+    if updated_hunger < 0:
+        updated_hunger = 0
+    if updated_hunger > 100:
+        updated_hunger = 0
     # decrease cow's hunger level by feeding it
-    cow["hunger"] = update_hunger
+    cow["hunger"] = updated_hunger
+    # print out options of food to feed user's cow
     print("_________________________________________________________________________________")
-    print("Yummy! " + pet["name"] + " enjoyed the food you fed them.")
-    print("Their hunger decreased by " + str(negative_hunger)) 
-
+    print("Here are the options of foods you can feed your cow: ")
+    food_choices = ["grass", "hay", "salt lick", "haggis", "anything fried", "baguette"]
+    print(food_choices)
+    #specific location number to select from the list
+    number_food = -1
+    #get a valid location to input
+    while number_food < 0 or number_food > len(food_choices) -1:
+        for x in range(len(food_choices)):
+            print(str(x) + ": " + food_choices[x])
+        number_food = int(input("Enter the number which corresponds with the food you'd like to feed your cow: "))
+        picked_food = food_choices[number_food]
+        # output hunger levels and user's input
+        print("Yummy! " + cow["name"] + " enjoyed the " + picked_food + " you fed them.")
+        print("Their hunger decreased by " + str(negative_hunger) + ".") 
 
 # Function to walk cow 
 def walk():
@@ -90,36 +100,12 @@ def walk():
         #get the selected location option from the list
         picked_location = location[number_location]
         # random event which will occur while your cow is on its walk
-        random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
+        random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and I now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
         # output statements for walk
         print()
         print(cow["name"] + " had a great time walking to the " + picked_location + "!")
         print("On their walk " + cow["name"] + " found " + random_event)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
 # Function to print out the updated status of the user's cow each "day"
 def updated_status():
     print()
