@@ -34,18 +34,7 @@ These are the activities that are currently on offer to do:""")
 
 # Function to play with cow's toys
 def play_toys():
-    # handle happiness levels if they dip into the negative or exceed 100
-    postive_happiness = random.randint(16, 32)
-    updated_happiness = cow["happiness"] + postive_happiness
-    if updated_happiness < 0:
-        updated_happiness = 0
-    if updated_happiness > 100:
-        updated_happiness = 0
-    # increase cow's happiness level by having it play with toys 
-    cow["happiness"] = updated_happiness
-    print("_________________________________________________________________________________")
-    print("Yummy! " + cow["name"] + " enjoyed the food you fed them.")
-    print("Their happiness increased by " + str(postive_happiness)) 
+   
 
 # Function to get new toys for user's cow
 def new_toys():
