@@ -89,9 +89,11 @@ def walk():
         number_location = int(input("Enter the number which corresponds with where you'd like to walk your cow: "))
         #get the selected location option from the list
         picked_location = location[number_location]
-        
+        # random event which will occur while your cow is on its walk
+        random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
         # output statements for walk
         print()
+        print(cow["name"] + " had a great time walking to the " + picked_location + "!")
         print("On their walk " + cow["name"] + " found " + random_event)
 
 
