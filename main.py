@@ -1,4 +1,4 @@
-from data import cow, toy_dictionary, food_dictionary, breed_dictionary
+from data import cow, breed_dictionary
 import random
 
 # Function for user to select breed of cow they want and name said cow
@@ -57,11 +57,13 @@ def play_toys():
 
     except (IndexError, ValueError):
         print()
+        print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
 If you want """ + cow["name"] + " to play with their toys you have to make sure you input the number that corresponds with the toy you want them to play with next time.")
 
     else:
         print()
+        print("_________________________________________________________________________________")
         print("Yipee! " + cow["name"] + " had a lot of fun playing with the " + selected_toy + " you picked for them.")
         print("Their happiness increased by " + str(postive_happiness) + ".") 
 
@@ -70,7 +72,7 @@ def new_toys():
     try:
         print("_________________________________________________________________________________")
         print("Hooray! " + cow["name"] + " is going to have some new toys to play with!")
-        selectable_toys = ["pile of mulch", "obstacle course", "cow plushie"]
+        selectable_toys = ["pile of mulch", "obstacle course", "cow plushie", "Loch Ness monster", "tumbleweed", "skiis"]
         print(selectable_toys)
         #specific toy number to select from the list
         number_toy = -1
@@ -85,14 +87,18 @@ def new_toys():
 
     except (IndexError, ValueError):
         print()
+        print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
 If you want to give """ + cow["name"] + " a new toy you have to make sure you input the number that corresponds with the toy you want to gift them next time.")
         
-    else:    
+    else:  
+        print()
+        print("_________________________________________________________________________________")  
         print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
 
 # Function to quit simulator 
 def quit_app():
+    print()
     print("_________________________________________________________________________________")
     print("You have quit the application. Thank you for playing with " + cow["name"] + "!")
 
@@ -124,11 +130,14 @@ def feed_cow():
     
     except (ValueError, IndexError):
         print()
+        print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
-If you want to fed """ + cow["name"] + " you have to make sure you input the number that corresponds with the food you want to feed them next time.")
+If you want to feed """ + cow["name"] + " you have to make sure you input the number that corresponds with the food you want to feed them next time.")
 
     else:
         # output hunger levels and user's input
+        print()
+        print("_________________________________________________________________________________")
         print("Yummy! " + cow["name"] + " enjoyed the " + picked_food + " you fed them.")
         print("Their hunger decreased by " + str(negative_hunger) + ".") 
 
@@ -137,7 +146,7 @@ def walk():
     try:
         print("_________________________________________________________________________________")
         print("Good choice! " + cow["name"] + " is really excited to go on a walk with you!")
-        location = ["far left paddock", "down to the pond", "mountain"]
+        location = ["far left paddock", "down to the pond", "mountain", "Scottish Highlands", "rodeo", "Effiel Tower"]
         print(location)
         #specific location number to select from the list
         number_location = -1
@@ -152,12 +161,15 @@ def walk():
             random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and I now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
         
     except (ValueError, IndexError):
+        print()
+        print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
 If you want to walk """ + cow["name"] + " you have to make sure you input the number that corresponds with the location you want to walk them next time.")
 
     else:   
         # output statements for walk
         print()
+        print("_________________________________________________________________________________")
         print(cow["name"] + " had a great time walking to the " + picked_location + "!")
         print("On their walk " + cow["name"] + " found " + random_event)
 
@@ -185,7 +197,7 @@ def primary_loop():
         "W": {"function": walk, "text": "Take " + cow["name"] + " for a walk!"},
         "Q": {"function": quit_app, "text": "Stop playing with " + cow["name"] + " and quit the application."}
     }   
-
+    # main game loop
     continue_game = True
     while continue_game:
         # display game menu
