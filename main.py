@@ -1,5 +1,6 @@
 from data import cow, breed_dictionary
 import random
+import cowsay
 
 print("------------------------------")
 print("UDDERLY AMOOSING COW SIMULATOR")
@@ -30,7 +31,7 @@ Make sure you type the letter which corresponds with the breed you want!""")
     # User input to name pet
     print("_________________________________________________________________________________")
     cow["name"] = input("Woohoo! You've adopted a cow as your pet. What will you name them? ")
-    print(cow["name"] + " is a great name for such a cool cow!")
+    cowsay.cow("Hello! My name is " + cow["name"] + ". I'm very pleased to meet you and have you as an owner!")
     print()
 
 # print menu
@@ -81,13 +82,13 @@ If you want """ + cow["name"] + " to play with their toys you have to make sure 
         print("Your cow's happiness increased by " + str(postive_happiness) + ".") 
         #conditional statement depending on user input
         if toy_number == 3:
-            print("Good choice! " + cow["name"] + " had a lot of fun keeping up the neighbours and playing tradtional Scottish music on the " + selected_toy + ".")
+            cowsay.cow("Good choice! I had a lot of fun keeping up the neighbours and playing tradtional Scottish music on the " + selected_toy + ".")
         elif toy_number == 4:
-            print(cow["name"] + " is glad you chose the " + selected_toy + "! They played country music until the wee hours of the morning.")
+            cowsay.cow("I'm glad you chose the " + selected_toy + "! I played country music until the wee hours of the morning.")
         elif toy_number == 5:
-            print(cow["name"] + " has been riding the " + selected_toy + " all day you selected for them. They're thinking of trying out for the Tour de France!")
+            cowsay.cow("I've been riding the " + selected_toy + " you selected for me all day. I'm thinking of trying out for the Tour de France!")
         else:
-            print("Yipee! " + cow["name"] + " had a lot of fun playing with the " + selected_toy + " you picked for them.")
+            cowsay.cow("Yipee! I had a lot of fun playing with the " + selected_toy + " you picked for me.")
         
 # Function to get new toys for user's cow
 def new_toys():
@@ -118,19 +119,19 @@ If you want to give """ + cow["name"] + " a new toy you have to make sure you in
         print("_________________________________________________________________________________")  
         #conditional statement depending on user input
         if number_toy == 3:
-            print("Good choice! " + cow["name"] + " is thankful you chose them the " + picked_toy + "! They love everything Scottish including Nessie!")
+            cowsay.cow("Good choice! I'm thankful you chose me the " + picked_toy + "! I love everything Scottish including Nessie!")
         elif number_toy == 4:
-            print(cow["name"] + " thinks the " + picked_toy + " you picked is super cool! They'll use it in their Wild West reenactments.")
+            cowsay.cow(" I think the " + picked_toy + " you picked is super cool! I'll use it in my Wild West reenactments.")
         elif number_toy == 5:
-            print(cow["name"] + " is inspired by the " + picked_toy + " you selected for them! It makes them want to take a trip to the French Alps.")
+            cowsay.cow("I've been inspired by the " + picked_toy + " you selected for me! It makes me want to take a trip to the French Alps.")
         else:
-            print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
+            cowsay.cow("I love the " + picked_toy + " you chose for me!")
 
 # Function to quit simulator 
 def quit_app():
     print()
     print("_________________________________________________________________________________")
-    print("You have quit the application. Thank you for playing with " + cow["name"] + "!")
+    cowsay.cow("You have quit the application. Thank you for playing with me!")
 
 # Function to feed user's cow
 def feed_cow():
@@ -171,13 +172,13 @@ If you want to feed """ + cow["name"] + " you have to make sure you input the nu
         print("Your cow's hunger decreased by " + str(negative_hunger) + ".") 
         #conditional statement depending on user input
         if number_food == 3:
-            print("Blaaarrrgghhhh! " + cow["name"] + " didn't think the " + picked_food + " you fed them was tasty, even if like the Highland cow it's a symbol of Scotland.")
+            cowsay.cow("Blaaarrrgghhhh! I didn't think the " + picked_food + " you fed me was tasty, even if like the Highland cow it's a symbol of Scotland.")
         elif number_food == 4:
-            print("Mmmm! " + cow["name"] + " seriously thought the " + picked_food + " was declious. They're thinking of attending a Texan County Fair so they can eat more fried foods.")
+            cowsay.cow("Mmmm! I seriously thought the " + picked_food + " was declious. I'm thinking of attending a Texan County Fair so I can eat more fried foods.")
         elif number_food == 5:
-            print("Oui! Oui! Délicieux! " + cow["name"] + " now understands why Limousin cows hype up the " + picked_food + " so much.")
+            cowsay.cow("Oui! Oui! Délicieux! I now understand why Limousin cows hype up the " + picked_food + " so much.")
         else:
-            print("Yummy! " + cow["name"] + " enjoyed the " + picked_food + " you fed them.")
+            cowsay.cow("Yummy! I enjoyed the " + picked_food + " you fed me.")
 
 # Function to walk cow 
 def walk():
@@ -196,7 +197,7 @@ def walk():
             #get the selected location option from the list
             picked_location = location[number_location]
             # random event which will occur while your cow is on its walk
-            random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and now they have new friends.", "an angus beef cheeseburger. Luckily they realised what angus beef was before they took a bite o_o"])
+            random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD (~_~メ)", "other cows to play with and now I have new friends (^o^;", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite (｡ŏ﹏ŏ)"])
     # error handling
     except (ValueError, IndexError):
         print()
@@ -208,16 +209,16 @@ If you want to walk """ + cow["name"] + " you have to make sure you input the nu
         # output statements for walk
         print()
         print("_________________________________________________________________________________")
-        print("On their walk " + cow["name"] + " found " + random_event)
+        cowsay.cow("On my walk I found " + random_event)
         # conditional outputs depending on user input
         if number_location == 3:
-            print(cow["name"] + " loved exploring the " + picked_location + ". There were a lot of Highland cows walking hiking around there too!")
+            cowsay.cow("I loved exploring the " + picked_location + ". There were a lot of Highland cows walking hiking around there too!")
         elif number_location == 4:
-            print(cow["name"] + " really enjoyed walking around the " + picked_location + ". There were a lot of Texas Longhorn cows participating in the rodeo!")
+            cowsay.cow("I really enjoyed walking around the " + picked_location + ". There were a lot of Texas Longhorn cows participating in the rodeo!")
         elif number_location == 5:
-            print(cow["name"] + " thought the " + picked_location + " looked beautiful lit up. There were a lot of Limousin cows enjoying the sights of Paris too!")
+            cowsay.cow("I thought the " + picked_location + " looked beautiful lit up. There were a lot of Limousin cows enjoying the sights of Paris too!")
         else:
-            print(cow["name"] + " had a great time walking to the " + picked_location + "!")
+            cowsay.cow("I had a great time walking to the " + picked_location + "!")
         
 # Function to print out the updated status of the user's cow each "day"
 def updated_status():
