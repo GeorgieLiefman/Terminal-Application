@@ -2,10 +2,15 @@ from data import cow, breed_dictionary
 import random
 import cowsay
 
-print("------------------------------")
-print("UDDERLY AMOOSING COW SIMULATOR")
-print("------------------------------")
+print("╔╗ ╔╗╔═══╗╔═══╗╔═══╗╔═══╗╔╗   ╔╗  ╔╗    ╔═══╗╔═╗╔═╗╔═══╗╔═══╗╔═══╗╔══╗╔═╗ ╔╗╔═══╗    ╔═══╗╔═══╗╔╗╔╗╔╗    ╔═══╗╔══╗╔═╗╔═╗╔╗ ╔╗╔╗   ╔═══╗╔════╗╔═══╗╔═══╗")
+print("║║ ║║╚╗╔╗║╚╗╔╗║║╔══╝║╔═╗║║║   ║╚╗╔╝║    ║╔═╗║║║╚╝║║║╔═╗║║╔═╗║║╔═╗║╚╣╠╝║║╚╗║║║╔═╗║    ║╔═╗║║╔═╗║║║║║║║    ║╔═╗║╚╣╠╝║║╚╝║║║║ ║║║║   ║╔═╗║║╔╗╔╗║║╔═╗║║╔═╗║")
+print("║║ ║║ ║║║║ ║║║║║╚══╗║╚═╝║║║   ╚╗╚╝╔╝    ║║ ║║║╔╗╔╗║║║ ║║║║ ║║║╚══╗ ║║ ║╔╗╚╝║║║ ╚╝    ║║ ╚╝║║ ║║║║║║║║    ║╚══╗ ║║ ║╔╗╔╗║║║ ║║║║   ║║ ║║╚╝║║╚╝║║ ║║║╚═╝║")
+print("║║ ║║ ║║║║ ║║║║║╔══╝║╔╗╔╝║║ ╔╗ ╚╗╔╝     ║╚═╝║║║║║║║║║ ║║║║ ║║╚══╗║ ║║ ║║╚╗║║║║╔═╗    ║║ ╔╗║║ ║║║╚╝╚╝║    ╚══╗║ ║║ ║║║║║║║║ ║║║║ ╔╗║╚═╝║  ║║  ║║ ║║║╔╗╔╝")
+print("║╚═╝║╔╝╚╝║╔╝╚╝║║╚══╗║║║╚╗║╚═╝║  ║║      ║╔═╗║║║║║║║║╚═╝║║╚═╝║║╚═╝║╔╣╠╗║║ ║║║║╚╩═║    ║╚═╝║║╚═╝║╚╗╔╗╔╝    ║╚═╝║╔╣╠╗║║║║║║║╚═╝║║╚═╝║║╔═╗║ ╔╝╚╗ ║╚═╝║║║║╚╗")
+print("╚═══╝╚═══╝╚═══╝╚═══╝╚╝╚═╝╚═══╝  ╚╝      ╚╝ ╚╝╚╝╚╝╚╝╚═══╝╚═══╝╚═══╝╚══╝╚╝ ╚═╝╚═══╝    ╚═══╝╚═══╝ ╚╝╚╝     ╚═══╝╚══╝╚╝╚╝╚╝╚═══╝╚═══╝╚╝ ╚╝ ╚══╝ ╚═══╝╚╝╚═╝")
+                                                                                                                                                       
 # overview and instructions for game
+print()
 print("This application is designed to be a virtual cow pet simulator, similar to Tamagotchis or Neopets. You will adopt and name a cow of your choosing that you can care for and play with. There are a number of features you can use to interact with your cow including: feeding them, walking them, giving them new toys, having them play with their toys and lastly observing their progress through daily status updates.")
 print()
 print("Each day your cow’s hunger levels will increase at a random amount between 5-10, regardless of if they are fed. You can decrease their hunger levels by feeding them. Similarly, their happiness levels will  decrease daily at a random amount between 5-10, regardless of if they play with their toys. You can increase their happiness levels by playing with their toys. A single day passes when one activity is completed.")
