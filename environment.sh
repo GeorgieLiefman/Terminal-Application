@@ -2,7 +2,7 @@
 if [[ -x "$(command -v python)" ]]
 then
     pyv="$(python -V 2>&1)"
-    if [[ $pyv == "Python 3"* ]]
+    if [[ $pyv == "Python"* ]]
     then
         echo "You have the correct version of python isntalled to run this program!"
     else
