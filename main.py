@@ -7,7 +7,7 @@ print("------------------------------")
 # overview and instructions for game
 print("This application is designed to be a virtual cow pet simulator, similar to Tamagotchis or Neopets. You will adopt and name a cow of your choosing that you can care for and play with. There are a number of features you can use to interact with your cow including: feeding them, walking them, giving them new toys, having them play with their toys and lastly observing their progress through daily status updates.")
 print()
-print("Each day your cow’s hunger levels will increase at a random amount unless they are fed. Similarly, their happiness levels will  decrease daily at a random amount unless they play with their toys. A single day passes when one activity is completed.")
+print("Each day your cow’s hunger levels will increase at a random amount between 5-10, regardless of if they are fed. You can decrease their hunger levels by feeding them. Similarly, their happiness levels will  decrease daily at a random amount between 5-10, regardless of if they play with their toys. You can increase their happiness levels by playing with their toys. A single day passes when one activity is completed.")
 print()
 print("The game will prompt you with choices to make for you cow for each activity/feature. Please make sure you enter the number/letter which corresponds with the choice you want to make. If you are confused, use the text on the screen as a guide for what to do next. ")
 print()
@@ -29,7 +29,7 @@ Make sure you type the letter which corresponds with the breed you want!""")
         print()
     # User input to name pet
     print("_________________________________________________________________________________")
-    cow["name"] = input("Woohoo! You've adopt a cow as your pet. What will you name them? ")
+    cow["name"] = input("Woohoo! You've adopted a cow as your pet. What will you name them? ")
     print(cow["name"] + " is a great name for such a cool cow!")
     print()
 
@@ -47,16 +47,16 @@ def play_toys():
     # handle happiness levels if they dip into the negative or exceed 100
     postive_happiness = random.randint(16, 32)
     updated_happiness = cow["happiness"] + postive_happiness
-    if updated_happiness <= 0:
-        updated_happiness = 0
-    if updated_happiness >= 100:
-        updated_happiness = 100
     # increase cow's happiness level by having it play with toys 
     cow["happiness"] = updated_happiness
+    if cow["happiness"] <= 0:
+        cow["happiness"] = 0
+    if cow["happiness"] >= 100:
+        cow["happiness"] = 100
     # print out options of toys to for user's cow to play with
     try:
         print("_________________________________________________________________________________")
-        print("Here are the options of foods you can feed your cow: ")
+        print("Here are the options of toys your cow can play with: ")
         toy_choices = ["big red ball", "cow figurine", "chicken", "bagpipes", "country guitar", "bicycle"]
         print(toy_choices)
         #specific location number to select from the list
@@ -65,7 +65,7 @@ def play_toys():
         while toy_number < 0 or toy_number > len(toy_choices) -1:
             for x in range(len(toy_choices)):
                 print(str(x) + ": " + toy_choices[x])
-            toy_number = int(input("Enter the number which corresponds with the toy you'd your cow to play with: "))
+            toy_number = int(input("Enter the number which corresponds with the toy you'd like your cow to play with: "))
             selected_toy = toy_choices[toy_number]
             # output happiness levels and user's input
     # error handling
@@ -81,7 +81,7 @@ If you want """ + cow["name"] + " to play with their toys you have to make sure 
         print("Your cow's happiness increased by " + str(postive_happiness) + ".") 
         #conditional statement depending on user input
         if toy_number == 3:
-            print("Good choice! " + cow["name"] + " had a lot of fun keeping up the neighbours and playing tradtional Scottish music on the " + selected_toy + " you picked for them.")
+            print("Good choice! " + cow["name"] + " had a lot of fun keeping up the neighbours and playing tradtional Scottish music on the " + selected_toy + ".")
         elif toy_number == 4:
             print(cow["name"] + " is glad you chose the " + selected_toy + "! They played country music until the wee hours of the morning.")
         elif toy_number == 5:
@@ -102,7 +102,7 @@ def new_toys():
         while number_toy < 0 or number_toy > len(selectable_toys) -1:
             for x in range(len(selectable_toys)):
                 print(str(x) + ": " + selectable_toys[x])
-            number_toy = int(input("Enter the number which corresponds with the toy you'd like for your cow: "))
+            number_toy = int(input("Enter the number which corresponds with the toy you'd like to give your cow: "))
             #get the selected toy option from our list
             picked_toy = selectable_toys[number_toy]
             cow["toys"].append(picked_toy)
@@ -120,9 +120,9 @@ If you want to give """ + cow["name"] + " a new toy you have to make sure you in
         if number_toy == 3:
             print("Good choice! " + cow["name"] + " is thankful you chose them the " + picked_toy + "! They love everything Scottish including Nessie!")
         elif number_toy == 4:
-            print(cow["name"] + " loves the " + picked_toy + " you chose for them! They'll use it in their Wild West reenactments.")
+            print(cow["name"] + " thinks the " + picked_toy + " you picked is super cool! They'll use it in their Wild West reenactments.")
         elif number_toy == 5:
-            print(cow["name"] + " loves the " + picked_toy + " you chose for them! It makes them want to take a trip to the French Alps.")
+            print(cow["name"] + " is inspired by the " + picked_toy + " you selected for them! It makes them want to take a trip to the French Alps.")
         else:
             print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
 
@@ -137,12 +137,12 @@ def feed_cow():
     # handle hunger levels if they dip into the negative or exceed 100
     negative_hunger = random.randint(16, 32)
     updated_hunger = cow["hunger"] - negative_hunger
-    if updated_hunger <= 0:
-        updated_hunger = 0
-    if updated_hunger >= 100:
-        updated_hunger = 100
     # decrease cow's hunger level by feeding it
     cow["hunger"] = updated_hunger
+    if cow["hunger"] <= 0:
+        cow["hunger"] = 0
+    if cow["hunger"] >= 100:
+        cow["hunger"] = 100
     # print out options of food to feed user's cow
     try:
         print("_________________________________________________________________________________")
@@ -184,7 +184,7 @@ def walk():
     try:
         print("_________________________________________________________________________________")
         print("Good choice! " + cow["name"] + " is really excited to go on a walk with you!")
-        location = ["far left paddock", "down to the pond", "mountain", "Scottish Highlands", "rodeo", "Effiel Tower"]
+        location = ["far left paddock", "down to the pond", "mountain", "Scottish Highlands", "rodeo", "Eiffel Tower"]
         print(location)
         #specific location number to select from the list
         number_location = -1
@@ -196,7 +196,7 @@ def walk():
             #get the selected location option from the list
             picked_location = location[number_location]
             # random event which will occur while your cow is on its walk
-            random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and I now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
+            random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and now they have new friends.", "an angus beef cheeseburger. Luckily they realised what angus beef was before they took a bite o_o"])
     # error handling
     except (ValueError, IndexError):
         print()
@@ -211,11 +211,11 @@ If you want to walk """ + cow["name"] + " you have to make sure you input the nu
         print("On their walk " + cow["name"] + " found " + random_event)
         # conditional outputs depending on user input
         if number_location == 3:
-            print(cow["name"] + " had a great time walking to the " + picked_location + ". There were a lot of Highland cows walking hiking around there too!")
+            print(cow["name"] + " loved exploring the " + picked_location + ". There were a lot of Highland cows walking hiking around there too!")
         elif number_location == 4:
-            print(cow["name"] + " had a great time walking to the " + picked_location + ". There were a lot of Texas Longhorn cows participating in the rodeo!")
+            print(cow["name"] + " really enjoyed walking around the " + picked_location + ". There were a lot of Texas Longhorn cows participating in the rodeo!")
         elif number_location == 5:
-            print(cow["name"] + " had a great time walking to the " + picked_location + ". There were a lot of Limousin cows enjoying the sights of Paris too!")
+            print(cow["name"] + " thought the " + picked_location + " looked beautiful lit up. There were a lot of Limousin cows enjoying the sights of Paris too!")
         else:
             print(cow["name"] + " had a great time walking to the " + picked_location + "!")
         
@@ -259,8 +259,8 @@ def primary_loop():
         # add functionality to main game menu
         menu_dictionary[feature_choice]["function"]()
         # increase/decrease cow's hunger, happiness and age
-        cow["hunger"] += random.randint(3, 15)
-        cow["happiness"] -= random.randint(4, 15)
+        cow["hunger"] += random.randint(5, 10)
+        cow["happiness"] -= random.randint(5, 10)
         cow["age"] += 1
         #print cow's updated status
         updated_status()
