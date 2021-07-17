@@ -68,19 +68,27 @@ def play_toys():
             toy_number = int(input("Enter the number which corresponds with the toy you'd your cow to play with: "))
             selected_toy = toy_choices[toy_number]
             # output happiness levels and user's input
-
+    # error handling
     except (IndexError, ValueError):
         print()
         print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
 If you want """ + cow["name"] + " to play with their toys you have to make sure you input the number that corresponds with the toy you want them to play with next time.")
-
+    # output if user input is valid
     else:
         print()
         print("_________________________________________________________________________________")
-        print("Yipee! " + cow["name"] + " had a lot of fun playing with the " + selected_toy + " you picked for them.")
-        print("Their happiness increased by " + str(postive_happiness) + ".") 
-
+        print("Your cow's happiness increased by " + str(postive_happiness) + ".") 
+        #conditional statement depending on user input
+        if toy_number == 3:
+            print("Good choice! " + cow["name"] + " had a lot of fun keeping up the neighbours and playing tradtional Scottish music on the " + selected_toy + " you picked for them.")
+        elif toy_number == 4:
+            print(cow["name"] + " is glad you chose the " + selected_toy + "! They played country music until the wee hours of the morning.")
+        elif toy_number == 5:
+            print(cow["name"] + " has been riding the " + selected_toy + " all day you selected for them. They're thinking of trying out for the Tour de France!")
+        else:
+            print("Yipee! " + cow["name"] + " had a lot of fun playing with the " + selected_toy + " you picked for them.")
+        
 # Function to get new toys for user's cow
 def new_toys():
     try:
@@ -98,17 +106,25 @@ def new_toys():
             #get the selected toy option from our list
             picked_toy = selectable_toys[number_toy]
             cow["toys"].append(picked_toy)
-    
+    # error handling
     except (IndexError, ValueError):
         print()
         print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
 If you want to give """ + cow["name"] + " a new toy you have to make sure you input the number that corresponds with the toy you want to gift them next time.")
-        
+    # output if users enter valid input   
     else:  
         print()
         print("_________________________________________________________________________________")  
-        print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
+        #conditional statement depending on user input
+        if number_toy == 3:
+            print("Good choice! " + cow["name"] + " is thankful you chose them the " + picked_toy + "! They love everything Scottish including Nessie!")
+        elif number_toy == 4:
+            print(cow["name"] + " loves the " + picked_toy + " you chose for them! They'll use it in their Wild West reenactments.")
+        elif number_toy == 5:
+            print(cow["name"] + " loves the " + picked_toy + " you chose for them! It makes them want to take a trip to the French Alps.")
+        else:
+            print(cow["name"] + " loves the " + picked_toy + " you chose for them!")
 
 # Function to quit simulator 
 def quit_app():
@@ -141,19 +157,27 @@ def feed_cow():
                 print(str(x) + ": " + food_choices[x])
             number_food = int(input("Enter the number which corresponds with the food you'd like to feed your cow: "))
             picked_food = food_choices[number_food]
-    
+    # error handling
     except (ValueError, IndexError):
         print()
         print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
 If you want to feed """ + cow["name"] + " you have to make sure you input the number that corresponds with the food you want to feed them next time.")
-
+    # output if user input is valid
     else:
         # output hunger levels and user's input
         print()
         print("_________________________________________________________________________________")
-        print("Yummy! " + cow["name"] + " enjoyed the " + picked_food + " you fed them.")
-        print("Their hunger decreased by " + str(negative_hunger) + ".") 
+        print("Your cow's hunger decreased by " + str(negative_hunger) + ".") 
+        #conditional statement depending on user input
+        if number_food == 3:
+            print("Blaaarrrgghhhh! " + cow["name"] + " didn't think the " + picked_food + " you fed them was tasty, even if like the Highland cow it's a symbol of Scotland.")
+        elif number_food == 4:
+            print("Mmmm! " + cow["name"] + " seriously thought the " + picked_food + " was declious. They're thinking of attending a Texan County Fair so they can eat more fried foods.")
+        elif number_food == 5:
+            print("Oui! Oui! Délicieux! " + cow["name"] + " now understands why Limousin cows hype up the " + picked_food + " so much.")
+        else:
+            print("Yummy! " + cow["name"] + " enjoyed the " + picked_food + " you fed them.")
 
 # Function to walk cow 
 def walk():
@@ -173,20 +197,28 @@ def walk():
             picked_location = location[number_location]
             # random event which will occur while your cow is on its walk
             random_event = random.choice(["$31,250, unfortunately it was Iranian Rial so it's only worth about $1 AUD.", "other cows to play with and I now have new friends.", "an angus beef cheeseburger. Luckily I realised what angus beef was before I took a bite o_o"])
-
+    # error handling
     except (ValueError, IndexError):
         print()
         print("_________________________________________________________________________________")
         print("""Sorry that was not a valid answer.
 If you want to walk """ + cow["name"] + " you have to make sure you input the number that corresponds with the location you want to walk them next time.")
-
+    # output if user input is valid
     else:   
         # output statements for walk
         print()
         print("_________________________________________________________________________________")
-        print(cow["name"] + " had a great time walking to the " + picked_location + "!")
         print("On their walk " + cow["name"] + " found " + random_event)
-
+        # conditional outputs depending on user input
+        if number_location == 3:
+            print(cow["name"] + " had a great time walking to the " + picked_location + ". There were a lot of Highland cows walking hiking around there too!")
+        elif number_location == 4:
+            print(cow["name"] + " had a great time walking to the " + picked_location + ". There were a lot of Texas Longhorn cows participating in the rodeo!")
+        elif number_location == 5:
+            print(cow["name"] + " had a great time walking to the " + picked_location + ". There were a lot of Limousin cows enjoying the sights of Paris too!")
+        else:
+            print(cow["name"] + " had a great time walking to the " + picked_location + "!")
+        
 # Function to print out the updated status of the user's cow each "day"
 def updated_status():
     print()
